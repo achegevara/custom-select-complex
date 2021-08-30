@@ -9,7 +9,8 @@ import "./css/app.css";
             let obj = {
                 text: option.text,
                 childList: [],
-                value: option.value
+                value: option.value,
+                level: option.dataset.level
             };
             if (!option.dataset.level) {
                 selectArr.push(obj);
@@ -52,11 +53,18 @@ import "./css/app.css";
                                                           </svg>    
                                                       </div>
                                                   </div>
-                                                  <span class="checkbox__legend selectWindow__list-item-text">
+                                                </label>
+                                                <span class="checkbox__legend selectWindow__list-item-text" data-level="${option.level? option.level : null}">
                                                   ${option.text}
-                                                </span>
-                                              </label>`
+                                                </span>`
             );
+            if(!li.querySelector(".selectWindow__list-item-text").hasAttribute("level")) {
+                li.querySelector(".selectWindow__list-item-text").style.marginLeft = (20 + "px");
+            }
+            let level = li.querySelector(".selectWindow__list-item-text").dataset.level;
+            if(level != null) {
+            li.querySelector(".selectWindow__list-item-text").style.marginLeft = (level*20 + "px");
+            }
             if (option.childList.length > 0) {
                 let childrenUl = createTreeDom(option.childList);
                 if (childrenUl) {
@@ -171,7 +179,7 @@ import "./css/app.css";
 
     // Добавляем стрелочки в многоуровневые опции.
     function addArrows() {
-        let liTexts = document.querySelectorAll(".selectWindow__list-item");
+        let liTexts = document.querySelectorAll(".selectWindow__list-item-text");
         for (let li of liTexts) {
             if (li.closest(".selectWindow__list-item").querySelector(".selectWindow__sublist")) {
                 li.insertAdjacentHTML("afterbegin", `<svg class="selectWindow__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">

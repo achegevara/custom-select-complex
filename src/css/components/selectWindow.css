@@ -116,12 +116,10 @@
     list-style: none;
     display: none;
     cursor: pointer;
-    margin-left: 20px;
 }
 
 .selectWindow__arrow {
     position: absolute;
-    top: 0;
-    left: 0;
-    transform: translate(-50%, 100%);
+    top: 15%;
+    left: -25%;
 }
