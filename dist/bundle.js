@@ -1,2 +1,615 @@
-(()=>{"use strict";function e(e,n){var l="undefined"!=typeof Symbol&&e[Symbol.iterator]||e["@@iterator"];if(!l){if(Array.isArray(e)||(l=function(e,n){if(e){if("string"==typeof e)return t(e,n);var l=Object.prototype.toString.call(e).slice(8,-1);return"Object"===l&&e.constructor&&(l=e.constructor.name),"Map"===l||"Set"===l?Array.from(e):"Arguments"===l||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(l)?t(e,n):void 0}}(e))||n&&e&&"number"==typeof e.length){l&&(e=l);var c=0,r=function(){};return{s:r,n:function(){return c>=e.length?{done:!0}:{done:!1,value:e[c++]}},e:function(e){throw e},f:r}}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}var o,s=!0,a=!1;return{s:function(){l=l.call(e)},n:function(){var e=l.next();return s=e.done,e},e:function(e){a=!0,o=e},f:function(){try{s||null==l.return||l.return()}finally{if(a)throw o}}}}function t(e,t){(null==t||t>e.length)&&(t=e.length);for(var n=0,l=new Array(t);n<t;n++)l[n]=e[n];return l}!function(){function t(t){var l,c=[],r=e(t.options);try{for(r.s();!(l=r.n()).done;){var o=l.value,s={text:o.text,childList:[],value:o.value};o.dataset.level?c.length>0&&n(c[c.length-1],parseInt(o.dataset.level)).childList.push(s):c.push(s)}}catch(e){r.e(e)}finally{r.f()}return c}function n(e,t){var n=e;for(--t;--t;){var l=n.childList;n=l[l.length-1]}return n}function l(t){var n,c=document.createElement("ul"),r=e(t);try{for(r.s();!(n=r.n()).done;){var o=n.value,s=document.createElement("li");if(s.classList.add("selectWindow__list-item"),s.insertAdjacentHTML("afterbegin",'<label class="checkbox">\n                                                  <input value="'.concat(o.value,'" type="checkbox" class="checkbox__input">\n                                                  <div class="checkbox__state">\n                                                      <div class="checkbox__control">\n                                                          <svg class="checkbox__icon" width="13" height="13" viewBox="0 0 12 15" fill="none" xmlns="http://www.w3.org/2000/svg">\n                                                              <path d="M1.71484 7.92681L5.60056 10.9913L10.4577 3.33011" stroke="white" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>\n                                                          </svg>    \n                                                      </div>\n                                                  </div>\n                                                  <span class="checkbox__legend selectWindow__list-item-text">\n                                                  ').concat(o.text,"\n                                                </span>\n                                              </label>")),o.childList.length>0){var a=l(o.childList);a&&s.append(a)}c.classList.add("selectWindow__sublist"),c.append(s)}}catch(e){r.e(e)}finally{r.f()}return c}function c(e){var t=e.currentTarget.closest(".selectWindow__list-item").querySelector(".selectWindow__sublist");e.stopPropagation(),e.target.classList.contains("checkbox")||t&&(t.classList.toggle("visible"),t.classList.contains("visible")?e.currentTarget.closest(".selectWindow__list-item").querySelector(".selectWindow__arrow").innerHTML='<svg class="arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">\n            <path d="M3 8L5.92468 5L9 8" stroke="black" stroke-linejoin="round"/>\n            </svg>':e.currentTarget.closest(".selectWindow__list-item").querySelector(".selectWindow__arrow").innerHTML='<svg class="arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">\n            <path d="M3 5L5.92468 8L9 5" stroke="black" stroke-linejoin="round"/>\n            </svg>')}function r(t){var n=t.target.closest(".checkbox").querySelector(".checkbox__input"),l=n.closest(".selectWindow__list-item").querySelectorAll(".checkbox__input");n.checked=!n.checked;var c,r=e(l);try{for(r.s();!(c=r.n()).done;){var o=c.value;n.checked?o.checked=!0:o.checked=!1}}catch(e){r.e(e)}finally{r.f()}}function o(e){document.querySelectorAll(".selectWindow_visible").forEach((function(e){return e.classList.remove("selectWindow_visible")})),e.target.closest(".container").querySelector(".selectWindow").classList.toggle("selectWindow_visible")}function s(e){document.querySelectorAll(".selectWindow_visible").forEach((function(e){return e.classList.remove("selectWindow_visible")})),e.target.parentNode.querySelector(".selectWindow").classList.toggle("selectWindow_visible")}function a(e){e.target.closest(".selectWindow").classList.remove("selectWindow_visible")}function i(t){var n,l=t.target.closest(".container"),c=[],r=e(l.querySelectorAll(".checkbox__input"));try{for(r.s();!(n=r.n()).done;){var o=n.value;1==o.checked&&c.push(o)}}catch(e){r.e(e)}finally{r.f()}var s=l.querySelector(".selectField");if(c.length>0){var a=c[0].closest(".selectWindow__list-item").querySelector(".selectWindow__list-item-text").textContent;s.textContent=a,s.classList.add("selectField_some-selected")}else s.textContent="Пока ничего не выбрано",s.classList.remove("selectField_some-selected");l.querySelector(".header__button_showSelected").textContent="Показать выбранное (".concat(c.length,")"),l.querySelector(".selectWindow").classList.remove("selectWindow_visible"),d()}function d(){var t,n=e(document.querySelectorAll(".container"));try{for(n.s();!(t=n.n()).done;){var l,c=e(t.value.querySelectorAll(".selectWindow__list-item"));try{for(c.s();!(l=c.n()).done;){var r=l.value;1==r.querySelector(".checkbox__input").checked?r.style.background="linear-gradient(0deg, rgba(3, 91, 119, 0.05), rgba(3, 91, 119, 0.05)), #FFFFFF":r.style.background="transparent"}}catch(e){c.e(e)}finally{c.f()}}}catch(e){n.e(e)}finally{n.f()}}function u(t){var n,l=e(t.target.closest(".container").querySelector(".selectWindow__clear-button").closest(".selectWindow").querySelectorAll(".checkbox__input"));try{for(l.s();!(n=l.n()).done;)n.value.checked=!1}catch(e){l.e(e)}finally{l.f()}}function v(e){for(var t,n=[],l=e&&e.options,c=0;c<l.length;c++)(t=l[c]).selected&&n.push(t.value||t.text);return n}function _(t){if(t.target==document){var n,l=e(document.querySelectorAll(".container"));try{for(l.s();!(n=l.n()).done;)c(n.value)}catch(e){l.e(e)}finally{l.f()}}else c(t.target.closest(".container"));function c(t){var n,l=v(t.querySelector(".multiSelect")),c=e(t.querySelectorAll(".checkbox__input"));try{for(c.s();!(n=c.n()).done;){var r=n.value;l.includes(r.value)?r.checked=!0:r.checked=!1}}catch(e){c.e(e)}finally{c.f()}var o=new Event("click");t.querySelector(".selectWindow__apply-button").dispatchEvent(o)}}!function(){var n,c=e(document.querySelectorAll(".multiSelect"));try{for(c.s();!(n=c.n()).done;){var r=n.value,o=t(r),s=document.createElement("div");s.classList.add("container"),document.body.append(s),s.append(r);var a=document.createElement("p");a.classList.add("header__title"),a.textContent="Выбор мультфильмов";var i=document.createElement("button");i.setAttribute("type","button"),i.classList.add("header__button_showSelected");var d=s.querySelector(".multiSelect");i.textContent="Показать выбранное (".concat(v(d).length,")");var u=document.createElement("div");u.classList.add("header"),u.append(a),u.append(i),s.append(u);var _=document.createElement("div");_.classList.add("selectField"),_.textContent="Пока ничего не выбрано",s.append(_);var h=document.createElement("div");h.classList.add("selectWindow");var f=document.createElement("div");f.classList.add("selectWindow__header"),h.append(f);var w=document.createElement("div");w.classList.add("selectWindow__title"),w.innerHTML='<svg class="selectWindow__back-arrow" width="20" height="24" viewBox="0 0 20 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n                                    <path d="M10 2.68524L3 11.8787M3 11.8787L10 21.0721M3 11.8787H18" stroke="black" stroke-width="1.5" stroke-linejoin="round"/>\n                                  </svg>\n                              <p>Выбор мультфильмов</p>',f.append(w);var y=document.createElement("input");y.classList.add("selectWindow__searchField"),y.setAttribute("type","text"),f.append(y),h.append(l(o));var p=document.createElement("button");p.setAttribute("type","button"),p.classList.add("selectWindow__apply-button");var m=document.createElement("span");m.textContent="Применить",m.classList.add("selectWindow__apply-button-text"),p.append(m);var b=document.createElement("button");b.setAttribute("type","button"),b.classList.add("selectWindow__clear-button"),b.textContent="Очистить";var g=document.createElement("div");g.classList.add("selectWindow__buttons-wrapper"),h.append(g),g.append(p),g.append(b),s.append(h);var L=h.querySelectorAll("ul");L[0].classList.remove("selectWindow__sublist"),L[0].classList.add("selectWindow__list")}}catch(e){c.e(e)}finally{c.f()}}(),function(){var t,n=e(document.querySelectorAll(".selectWindow__list-item"));try{for(n.s();!(t=n.n()).done;){var l=t.value;l.closest(".selectWindow__list-item").querySelector(".selectWindow__sublist")&&l.insertAdjacentHTML("afterbegin",'<svg class="selectWindow__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">\n                                                  <path d="M3 5L5.92468 8L9 5" stroke="black" stroke-linejoin="round"/>\n                                                </svg>')}}catch(e){n.e(e)}finally{n.f()}}(),function(){var t,n=e(document.querySelectorAll(".container"));try{for(n.s();!(t=n.n()).done;){var l=t.value;l.querySelector(".header__button_showSelected").addEventListener("click",o),l.querySelector(".selectField").addEventListener("click",s),l.querySelector(".selectWindow__back-arrow").addEventListener("click",a),l.querySelector(".selectWindow__apply-button").addEventListener("click",i);var v,h=e(l.querySelectorAll(".checkbox__input"));try{for(h.s();!(v=h.n()).done;)v.value.addEventListener("change",d)}catch(e){h.e(e)}finally{h.f()}l.querySelector(".selectWindow__clear-button").addEventListener("click",u),l.querySelector(".multiSelect").addEventListener("change",_);var f,w=e(l.querySelectorAll(".selectWindow__list-item-text"));try{for(w.s();!(f=w.n()).done;)f.value.addEventListener("click",c)}catch(e){w.e(e)}finally{w.f()}var y,p=e(l.querySelectorAll(".selectWindow__arrow"));try{for(p.s();!(y=p.n()).done;)y.value.addEventListener("click",c)}catch(e){p.e(e)}finally{p.f()}var m,b=e(l.querySelectorAll(".checkbox"));try{for(b.s();!(m=b.n()).done;)m.value.addEventListener("click",r)}catch(e){b.e(e)}finally{b.f()}}}catch(e){n.e(e)}finally{n.f()}}(),window.onload=_}()})();
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./src/css/app.css":
+/*!*************************!*\
+  !*** ./src/css/app.css ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
+/*!********************!*\
+  !*** ./src/app.js ***!
+  \********************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _css_app_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css/app.css */ "./src/css/app.css");
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
+
+(function () {
+  //Функция создаёт дерево опций из переданного селекта, 
+  //работает также для многоуровневого селекта(уровни указывать в атрибутах data-level).
+  function createOptionsTree(select) {
+    var selectArr = [];
+
+    var _iterator = _createForOfIteratorHelper(select.options),
+        _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var option = _step.value;
+        var obj = {
+          text: option.text,
+          childList: [],
+          value: option.value,
+          level: option.dataset.level
+        };
+
+        if (!option.dataset.level) {
+          selectArr.push(obj);
+        } else if (selectArr.length > 0) {
+          var parent = getNthParent(selectArr[selectArr.length - 1], parseInt(option.dataset.level));
+          parent.childList.push(obj);
+        }
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+
+    return selectArr;
+  } // Вспомогательная функция. Нужна при использовании многоуровневого селекта. 
+  // Определяет родительский элемент для добавления вложенных опций.
+
+
+  function getNthParent(option, level) {
+    var resultOption = option;
+    --level;
+
+    while (--level) {
+      var childList = resultOption.childList;
+      resultOption = childList[childList.length - 1];
+    }
+
+    return resultOption;
+  } // Создаём список на основе ранее подготовленного из селекта массива данных.
+  // Для многоуровневых селектов используется рекурсия.
+
+
+  function createTreeDom(arr) {
+    var ul = document.createElement('ul');
+
+    var _iterator2 = _createForOfIteratorHelper(arr),
+        _step2;
+
+    try {
+      for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+        var option = _step2.value;
+        var li = document.createElement('li');
+        li.classList.add("selectWindow__list-item");
+        li.insertAdjacentHTML("afterbegin", "<label class=\"checkbox\">\n                                                  <input value=\"".concat(option.value, "\" type=\"checkbox\" class=\"checkbox__input\">\n                                                  <div class=\"checkbox__state\">\n                                                      <div class=\"checkbox__control\">\n                                                          <svg class=\"checkbox__icon\" width=\"13\" height=\"13\" viewBox=\"0 0 12 15\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                                              <path d=\"M1.71484 7.92681L5.60056 10.9913L10.4577 3.33011\" stroke=\"white\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n                                                          </svg>    \n                                                      </div>\n                                                  </div>\n                                                </label>\n                                                <span class=\"checkbox__legend selectWindow__list-item-text\" data-level=\"").concat(option.level ? option.level : null, "\">\n                                                  ").concat(option.text, "\n                                                </span>"));
+
+        if (!li.querySelector(".selectWindow__list-item-text").hasAttribute("level")) {
+          li.querySelector(".selectWindow__list-item-text").style.marginLeft = 20 + "px";
+        }
+
+        var level = li.querySelector(".selectWindow__list-item-text").dataset.level;
+
+        if (level != null) {
+          li.querySelector(".selectWindow__list-item-text").style.marginLeft = level * 20 + "px";
+        }
+
+        if (option.childList.length > 0) {
+          var childrenUl = createTreeDom(option.childList);
+
+          if (childrenUl) {
+            li.append(childrenUl);
+          }
+        }
+
+        ul.classList.add('selectWindow__sublist');
+        ul.append(li);
+      }
+    } catch (err) {
+      _iterator2.e(err);
+    } finally {
+      _iterator2.f();
+    }
+
+    return ul;
+  } // Отрисовываем DOM
+
+
+  function createDOM() {
+    // Для каждого мультиселекта на странице...
+    var multiSelects = document.querySelectorAll('.multiSelect');
+
+    var _iterator3 = _createForOfIteratorHelper(multiSelects),
+        _step3;
+
+    try {
+      for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+        var multiSelect = _step3.value;
+        // Передаём мультиселект для подготовки дерева опций.
+        var finalArr = createOptionsTree(multiSelect); // Создаём контейнер.
+
+        var container = document.createElement('div');
+        container.classList.add("container");
+        document.body.append(container);
+        container.append(multiSelect); // Название нашего селекта.
+
+        var headerTitle = document.createElement('p');
+        headerTitle.classList.add("header__title");
+        headerTitle.textContent = "Выбор мультфильмов"; // Кнопку "Показать выбранное".
+
+        var showSelected = document.createElement("button");
+        showSelected.setAttribute("type", "button");
+        showSelected.classList.add("header__button_showSelected");
+        var closestSelect = container.querySelector(".multiSelect");
+        showSelected.textContent = "\u041F\u043E\u043A\u0430\u0437\u0430\u0442\u044C \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u043E\u0435 (".concat(getSelectValues(closestSelect).length, ")"); // Хедер.
+
+        var header = document.createElement("div");
+        header.classList.add("header");
+        header.append(headerTitle);
+        header.append(showSelected);
+        container.append(header); // Создаём поле индикации выбора.
+
+        var selectField = document.createElement("div");
+        selectField.classList.add("selectField");
+        selectField.textContent = "Пока ничего не выбрано";
+        container.append(selectField); // Окно выбора опций.
+
+        var selectWindow = document.createElement("div");
+        selectWindow.classList.add("selectWindow");
+        var selectHeader = document.createElement("div");
+        selectHeader.classList.add("selectWindow__header");
+        selectWindow.append(selectHeader); // Название окна выбора опций.
+
+        var selectTitle = document.createElement("div");
+        selectTitle.classList.add("selectWindow__title");
+        selectTitle.innerHTML = "<svg class=\"selectWindow__back-arrow\" width=\"20\" height=\"24\" viewBox=\"0 0 20 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                    <path d=\"M10 2.68524L3 11.8787M3 11.8787L10 21.0721M3 11.8787H18\" stroke=\"black\" stroke-width=\"1.5\" stroke-linejoin=\"round\"/>\n                                  </svg>\n                              <p>\u0412\u044B\u0431\u043E\u0440 \u043C\u0443\u043B\u044C\u0442\u0444\u0438\u043B\u044C\u043C\u043E\u0432</p>";
+        selectHeader.append(selectTitle); // Поле поиска.
+
+        var searchField = document.createElement("input");
+        searchField.classList.add("selectWindow__searchField");
+        searchField.setAttribute("type", "text");
+        selectHeader.append(searchField); // Создаём DOM на основе дерева опций, добавляем его в окно выбора опций.
+
+        selectWindow.append(createTreeDom(finalArr)); // Кнопка "Применить".
+
+        var applyButton = document.createElement("button");
+        applyButton.setAttribute("type", "button");
+        applyButton.classList.add("selectWindow__apply-button");
+        var applyButtonText = document.createElement("span");
+        applyButtonText.textContent = "Применить";
+        applyButtonText.classList.add("selectWindow__apply-button-text");
+        applyButton.append(applyButtonText); // Кнопка "Очистить".
+
+        var clearButton = document.createElement("button");
+        clearButton.setAttribute("type", "button");
+        clearButton.classList.add("selectWindow__clear-button");
+        clearButton.textContent = "Очистить"; // Контейнер для кнопок "Применить" и "Очистить".
+
+        var buttonsWrapper = document.createElement("div");
+        buttonsWrapper.classList.add("selectWindow__buttons-wrapper");
+        selectWindow.append(buttonsWrapper);
+        buttonsWrapper.append(applyButton);
+        buttonsWrapper.append(clearButton);
+        container.append(selectWindow); // Правим классы основного списка для корректной работы кода.
+
+        var uls = selectWindow.querySelectorAll('ul');
+        uls[0].classList.remove('selectWindow__sublist');
+        uls[0].classList.add('selectWindow__list');
+      }
+    } catch (err) {
+      _iterator3.e(err);
+    } finally {
+      _iterator3.f();
+    }
+  }
+
+  createDOM(); // Добавляем стрелочки в многоуровневые опции.
+
+  function addArrows() {
+    var liTexts = document.querySelectorAll(".selectWindow__list-item-text");
+
+    var _iterator4 = _createForOfIteratorHelper(liTexts),
+        _step4;
+
+    try {
+      for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
+        var li = _step4.value;
+
+        if (li.closest(".selectWindow__list-item").querySelector(".selectWindow__sublist")) {
+          li.insertAdjacentHTML("afterbegin", "<svg class=\"selectWindow__arrow\" width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                                  <path d=\"M3 5L5.92468 8L9 5\" stroke=\"black\" stroke-linejoin=\"round\"/>\n                                                </svg>");
+        }
+      }
+    } catch (err) {
+      _iterator4.e(err);
+    } finally {
+      _iterator4.f();
+    }
+  }
+
+  addArrows(); // Добавляем обработчики событий на элементы.
+
+  function addListeners() {
+    var containers = document.querySelectorAll(".container");
+
+    var _iterator5 = _createForOfIteratorHelper(containers),
+        _step5;
+
+    try {
+      for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
+        var container = _step5.value;
+        var showSelected = container.querySelector(".header__button_showSelected");
+        showSelected.addEventListener("click", openList1);
+        var selectField = container.querySelector(".selectField");
+        selectField.addEventListener("click", openList2);
+        var backArrow = container.querySelector(".selectWindow__back-arrow");
+        backArrow.addEventListener("click", goBack);
+        var applyButton = container.querySelector(".selectWindow__apply-button");
+        applyButton.addEventListener("click", handleApply);
+        var checkItems = container.querySelectorAll(".checkbox__input");
+
+        var _iterator6 = _createForOfIteratorHelper(checkItems),
+            _step6;
+
+        try {
+          for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
+            var item = _step6.value;
+            item.addEventListener("change", checkSelects);
+          }
+        } catch (err) {
+          _iterator6.e(err);
+        } finally {
+          _iterator6.f();
+        }
+
+        var clearButton = container.querySelector(".selectWindow__clear-button");
+        clearButton.addEventListener("click", clearChecks);
+        var multiSelect = container.querySelector('.multiSelect');
+        multiSelect.addEventListener("change", onSelectChange);
+        var listItems = container.querySelectorAll(".selectWindow__list-item-text");
+
+        var _iterator7 = _createForOfIteratorHelper(listItems),
+            _step7;
+
+        try {
+          for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
+            var _item = _step7.value;
+
+            _item.addEventListener("click", handleSub);
+          }
+        } catch (err) {
+          _iterator7.e(err);
+        } finally {
+          _iterator7.f();
+        }
+
+        var arrows = container.querySelectorAll(".selectWindow__arrow");
+
+        var _iterator8 = _createForOfIteratorHelper(arrows),
+            _step8;
+
+        try {
+          for (_iterator8.s(); !(_step8 = _iterator8.n()).done;) {
+            var arrow = _step8.value;
+            arrow.addEventListener("click", handleSub);
+          }
+        } catch (err) {
+          _iterator8.e(err);
+        } finally {
+          _iterator8.f();
+        }
+
+        var checks = container.querySelectorAll(".checkbox");
+
+        var _iterator9 = _createForOfIteratorHelper(checks),
+            _step9;
+
+        try {
+          for (_iterator9.s(); !(_step9 = _iterator9.n()).done;) {
+            var check = _step9.value;
+            check.addEventListener("click", handleCheck);
+          }
+        } catch (err) {
+          _iterator9.e(err);
+        } finally {
+          _iterator9.f();
+        }
+      }
+    } catch (err) {
+      _iterator5.e(err);
+    } finally {
+      _iterator5.f();
+    }
+  }
+
+  addListeners(); // Функция отвечает за открытие вложенных опций. 
+
+  function handleSub(e) {
+    var sub = e.currentTarget.closest(".selectWindow__list-item").querySelector(".selectWindow__sublist");
+    e.stopPropagation();
+    if (e.target.classList.contains("checkbox")) return;
+
+    if (sub) {
+      sub.classList.toggle("visible");
+
+      if (sub.classList.contains("visible")) {
+        e.currentTarget.closest(".selectWindow__list-item").querySelector(".selectWindow__arrow").innerHTML = "<svg class=\"arrow\" width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n            <path d=\"M3 8L5.92468 5L9 8\" stroke=\"black\" stroke-linejoin=\"round\"/>\n            </svg>";
+      } else {
+        e.currentTarget.closest(".selectWindow__list-item").querySelector(".selectWindow__arrow").innerHTML = "<svg class=\"arrow\" width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n            <path d=\"M3 5L5.92468 8L9 5\" stroke=\"black\" stroke-linejoin=\"round\"/>\n            </svg>";
+      }
+    }
+  } // Функция-обработчик выбора опций путём клика в чекбоксах.
+
+
+  function handleCheck(e) {
+    var targetCheck = e.target.closest(".checkbox").querySelector(".checkbox__input");
+    var otherChecks = targetCheck.closest(".selectWindow__list-item").querySelectorAll(".checkbox__input");
+    targetCheck.checked = !targetCheck.checked;
+
+    var _iterator10 = _createForOfIteratorHelper(otherChecks),
+        _step10;
+
+    try {
+      for (_iterator10.s(); !(_step10 = _iterator10.n()).done;) {
+        var item = _step10.value;
+
+        if (targetCheck.checked) {
+          item.checked = true;
+        } else {
+          item.checked = false;
+        }
+      }
+    } catch (err) {
+      _iterator10.e(err);
+    } finally {
+      _iterator10.f();
+    }
+  } // Обработчик клика по кнопке "Показать выбранное". Открывает окно выбора опций.
+
+
+  function openList1(e) {
+    document.querySelectorAll(".selectWindow_visible").forEach(function (elem) {
+      return elem.classList.remove("selectWindow_visible");
+    });
+    e.target.closest(".container").querySelector(".selectWindow").classList.toggle("selectWindow_visible");
+  } // Обработчик клика по полю индикации выбора. Открывает окно выбора опций.
+
+
+  function openList2(e) {
+    document.querySelectorAll(".selectWindow_visible").forEach(function (elem) {
+      return elem.classList.remove("selectWindow_visible");
+    });
+    e.target.parentNode.querySelector(".selectWindow").classList.toggle("selectWindow_visible");
+  } // Возвращение из окна выбора опций при нажатии стрелочки "назад".
+
+
+  function goBack(e) {
+    e.target.closest(".selectWindow").classList.remove("selectWindow_visible");
+  } // Обработка клика по кнопке "Применить".
+
+
+  function handleApply(event) {
+    var closestContainer = event.target.closest(".container");
+    var allChecks = closestContainer.querySelectorAll(".checkbox__input");
+    var storeChecked = [];
+
+    var _iterator11 = _createForOfIteratorHelper(allChecks),
+        _step11;
+
+    try {
+      for (_iterator11.s(); !(_step11 = _iterator11.n()).done;) {
+        var check = _step11.value;
+
+        if (check.checked == true) {
+          storeChecked.push(check);
+        } else continue;
+      }
+    } catch (err) {
+      _iterator11.e(err);
+    } finally {
+      _iterator11.f();
+    }
+
+    var fieldSelect = closestContainer.querySelector(".selectField");
+
+    if (storeChecked.length > 0) {
+      var firstCheckText = storeChecked[0].closest(".selectWindow__list-item").querySelector(".selectWindow__list-item-text").textContent;
+      fieldSelect.textContent = firstCheckText;
+      fieldSelect.classList.add("selectField_some-selected");
+    } else {
+      fieldSelect.textContent = "Пока ничего не выбрано";
+      fieldSelect.classList.remove("selectField_some-selected");
+    }
+
+    var showSelected = closestContainer.querySelector(".header__button_showSelected");
+    showSelected.textContent = "\u041F\u043E\u043A\u0430\u0437\u0430\u0442\u044C \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u043E\u0435 (".concat(storeChecked.length, ")");
+    closestContainer.querySelector(".selectWindow").classList.remove("selectWindow_visible");
+    checkSelects();
+  } // Стилизация выбранных опций.
+
+
+  function checkSelects() {
+    var containers = document.querySelectorAll(".container");
+
+    var _iterator12 = _createForOfIteratorHelper(containers),
+        _step12;
+
+    try {
+      for (_iterator12.s(); !(_step12 = _iterator12.n()).done;) {
+        var container = _step12.value;
+        var listItems = container.querySelectorAll(".selectWindow__list-item");
+
+        var _iterator13 = _createForOfIteratorHelper(listItems),
+            _step13;
+
+        try {
+          for (_iterator13.s(); !(_step13 = _iterator13.n()).done;) {
+            var item = _step13.value;
+
+            if (item.querySelector(".checkbox__input").checked == true) {
+              item.style.background = "linear-gradient(0deg, rgba(3, 91, 119, 0.05), rgba(3, 91, 119, 0.05)), #FFFFFF";
+            } else {
+              item.style.background = "transparent"; // listItems[0].querySelector(".checkbox__input").checked = false;
+            }
+          }
+        } catch (err) {
+          _iterator13.e(err);
+        } finally {
+          _iterator13.f();
+        }
+      }
+    } catch (err) {
+      _iterator12.e(err);
+    } finally {
+      _iterator12.f();
+    }
+  } // Сброс всех выбранных опций в контейнере.
+
+
+  function clearChecks(event) {
+    var container = event.target.closest(".container");
+    var clearButton = container.querySelector(".selectWindow__clear-button");
+    var allCheckInputs = clearButton.closest(".selectWindow").querySelectorAll(".checkbox__input");
+
+    var _iterator14 = _createForOfIteratorHelper(allCheckInputs),
+        _step14;
+
+    try {
+      for (_iterator14.s(); !(_step14 = _iterator14.n()).done;) {
+        var item = _step14.value;
+        item.checked = false;
+      }
+    } catch (err) {
+      _iterator14.e(err);
+    } finally {
+      _iterator14.f();
+    }
+  } // Получение опций с атрибутом "selected" из переданного селекта.
+
+
+  function getSelectValues(select) {
+    var result = [];
+    var options = select && select.options;
+    var opt;
+
+    for (var i = 0; i < options.length; i++) {
+      opt = options[i];
+
+      if (opt.selected) {
+        result.push(opt.value || opt.text);
+      }
+    }
+
+    return result;
+  } // Обработчик изменений в селекте.
+
+
+  function onSelectChange(event) {
+    if (event.target == document) {
+      var containers = document.querySelectorAll(".container");
+
+      var _iterator15 = _createForOfIteratorHelper(containers),
+          _step15;
+
+      try {
+        for (_iterator15.s(); !(_step15 = _iterator15.n()).done;) {
+          var container = _step15.value;
+          processSelectChange(container);
+        }
+      } catch (err) {
+        _iterator15.e(err);
+      } finally {
+        _iterator15.f();
+      }
+    } else {
+      var _container = event.target.closest(".container");
+
+      processSelectChange(_container);
+    }
+
+    function processSelectChange(container) {
+      var multiSelect = container.querySelector('.multiSelect');
+      var allSelected = getSelectValues(multiSelect);
+      var inputs = container.querySelectorAll(".checkbox__input");
+
+      var _iterator16 = _createForOfIteratorHelper(inputs),
+          _step16;
+
+      try {
+        for (_iterator16.s(); !(_step16 = _iterator16.n()).done;) {
+          var input = _step16.value;
+
+          if (allSelected.includes(input.value)) {
+            input.checked = true;
+          } else {
+            input.checked = false;
+          }
+        }
+      } catch (err) {
+        _iterator16.e(err);
+      } finally {
+        _iterator16.f();
+      }
+
+      var click = new Event("click");
+      var applyButton = container.querySelector(".selectWindow__apply-button");
+      applyButton.dispatchEvent(click);
+    }
+  } // При загрузке страницы будут проверены атрибуты "selected" для их незамедлительной отрисовки в UI.
+
+
+  window.onload = onSelectChange;
+})();
+})();
+
+/******/ })()
+;
 //# sourceMappingURL=bundle.js.map

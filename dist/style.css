@@ -1,4 +1,10 @@
+/*!**********************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/css/app.css ***!
+  \**********************************************************************************************************/
 @import url(https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap);
+/*!************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/css/components/container.css ***!
+  \************************************************************************************/
 .container {
     margin: 20px;
     font-family: 'Source Sans Pro', sans-serif;
@@ -7,6 +13,9 @@
     position: relative;
 }
 
+/*!*********************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/css/components/header.css ***!
+  \*********************************************************************************/
 .header {
     display: flex;
     justify-content: space-between;
@@ -33,6 +42,9 @@
     cursor: pointer;
 }
 
+/*!**************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/css/components/selectField.css ***!
+  \**************************************************************************************/
 .selectField {
     height: 40px;
     background: #FFFFFF;
@@ -62,6 +74,9 @@
     border-radius: 4px;
 }
 
+/*!***************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/css/components/selectWindow.css ***!
+  \***************************************************************************************/
 .selectWindow {
     height: 100%;
     width: 100%;
@@ -180,19 +195,19 @@
     list-style: none;
     display: none;
     cursor: pointer;
-    margin-left: 20px;
 }
 
 .selectWindow__arrow {
     position: absolute;
-    top: 0;
-    left: 0;
-    transform: translate(-50%, 100%);
+    top: 15%;
+    left: -25%;
 }
 
+/*!***********************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/css/components/checkbox.css ***!
+  \***********************************************************************************/
 .checkbox {
-    display: flex;
-    align-items: center;
+    display: inline-block;
 }
 
 .checkbox__input {
@@ -208,7 +223,7 @@
     display: flex;
     align-items: center;
     cursor: pointer;
-    margin: 10px;
+    margin: 10px 0;
 }
 
 .checkbox__control {
@@ -255,6 +270,9 @@
     }
 }
 
+/*!*************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/css/normalize.css ***!
+  \*************************************************************************/
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
 /* Document
@@ -614,7 +632,24 @@ template {
     display: none;
 }
 
-html,body{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}ul,li{margin-inline-start:0px;padding-inline-start:0px}.multiSelect{z-index:0}.visible{display:block}
+/*!**************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/css/app.css (1) ***!
+  \**************************************************************************************************************/
+html, body {
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+ul, li {
+  margin-inline-start: 0px;
+  padding-inline-start: 0px; }
+
+.multiSelect {
+  z-index: 0; }
+
+.visible {
+  display: block; }
 
 
 /*# sourceMappingURL=style.css.map*/
